@@ -3,11 +3,13 @@ package com.collegesoft.carservice.services;
 import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.model.Customer;
 import com.collegesoft.carservice.repositories.CarRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class PriceService {
     public UserService userService;
     public CarRepository carRepository;
