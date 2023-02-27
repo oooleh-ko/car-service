@@ -10,6 +10,6 @@ public class PriceController {
     PriceService priceService;
     @GetMapping(value = "/calculate")
     public int getPrice() {
-        return this.priceService.getPriceForCar(new Car(), null);
+        return this.priceService.getPriceForCarDailyRent(1l, null);
     }
 }
