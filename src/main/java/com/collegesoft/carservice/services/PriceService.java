@@ -2,7 +2,6 @@ package com.collegesoft.carservice.services;
 
 import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.model.Customer;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.Year;
@@ -29,7 +28,7 @@ public class PriceService {
     }
 
     public int getPriceForCarDailyRent(long carId, Customer customer) {
-        int customerDiscount = this.userService.getDiscountPercentForCustomer(new Customer());
+        double customerDiscount = this.userService.getDiscountPercentForCustomer(new Customer());
         int carProductionYear = this.findCarById(carId).getProductionYear();
         int currentYear = Year.now().getValue();
 

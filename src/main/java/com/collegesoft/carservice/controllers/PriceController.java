@@ -1,6 +1,5 @@
 package com.collegesoft.carservice.controllers;
 
-import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.services.PriceService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
