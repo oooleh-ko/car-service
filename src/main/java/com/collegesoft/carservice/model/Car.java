@@ -9,7 +9,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Getter
 @Setter
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 public class Car extends BaseEntity {
     private int productionYear;
     private String vinCode;

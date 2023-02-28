@@ -1,8 +1,8 @@
 package com.collegesoft.carservice.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class CarRent {
-    private Date startDate;
-    private Date endDate;
+public class CarRent extends BaseEntity {
+    private LocalDate startDate;
+    private LocalDate endDate;
 }

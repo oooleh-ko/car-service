@@ -36,7 +36,7 @@ class PriceServiceTest {
 	@Test
 	void verifyPriceServiceIsCallingServiceForCalculatingUserDiscount1() {
 		// act
-		int finalPrice = this.priceService.getPriceForCarDailyRent(1L, customer);
+		int finalPrice = this.priceService.getPriceForCarDailyRent(1L, null);
 
 		// assert
 		Assert.isTrue(finalPrice == 85, "");
@@ -45,7 +45,7 @@ class PriceServiceTest {
 
 	@Test
 	void verifyPriceServiceIsCallingServiceForCalculatingUserDiscount2() {
-		int finalPrice = this.priceService.getPriceForCarDailyRent(2L, customer);
+		int finalPrice = this.priceService.getPriceForCarDailyRent(2L, null);
 
 		Assert.isTrue(finalPrice == 110, "");
 		verify(userService, times(1)).getDiscountPercentForCustomer(any());
@@ -53,7 +53,7 @@ class PriceServiceTest {
 
 	@Test
 	void verifyPriceServiceIsCallingServiceForCalculatingUserDiscount3() {
-		int finalPrice = this.priceService.getPriceForCarDailyRent(3L, customer);
+		int finalPrice = this.priceService.getPriceForCarDailyRent(3L, null);
 
 		Assert.isTrue(finalPrice == 100, "");
 		verify(userService, times(1)).getDiscountPercentForCustomer(any());

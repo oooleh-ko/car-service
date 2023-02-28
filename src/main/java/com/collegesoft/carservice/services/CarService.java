@@ -3,6 +3,7 @@ package com.collegesoft.carservice.services;
 import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.repositories.CarRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -43,11 +44,13 @@ public class CarService {
         return this.repo.save(car);
     }
 
+    @Transactional
     public Car update(Long id, Car car) {
         car.setId(id);
         return this.repo.save(car);
     }
 
+    @Transactional
     public boolean delete(Long id) {
         this.repo.deleteById(id);
         return true;

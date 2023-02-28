@@ -1,10 +1,10 @@
 package com.collegesoft.carservice.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-public class Customer {
-    @Getter
-    @Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Customer extends BaseEntity {
     private int rentAmountTimes;
 }
