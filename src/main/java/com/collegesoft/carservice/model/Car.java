@@ -1,12 +1,19 @@
 package com.collegesoft.carservice.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
 @Setter
-public class Car {
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+public class Car extends BaseEntity {
     private int productionYear;
     private String vinCode;
-    private Customer owner;
+    private String imageUrl;
+    private String brand;
+    private String model;
 }
