@@ -1,13 +1,10 @@
 package com.collegesoft.carservice.services;
 
-import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.model.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.Year;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -17,11 +14,10 @@ public class PriceService {
     public UserService userService;
     public CarService carService;
 
-
-
     public int getPriceForCarDailyRent(long carId,  Long userId) {
         double customerDiscount = this.userService.getDiscountPercentForCustomer(new Customer());
         int carProductionYear = Objects.requireNonNull(this.carService.findById(carId).orElse(null)).getProductionYear();
+
         int currentYear = Year.now().getValue();
 
         double carDiscount;
