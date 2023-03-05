@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    public int getDiscountPercentForCustomer(Customer customer) {
+    public double getDiscountPercentForCustomer(Customer customer) {
         int times = customer.getRentAmountTimes();
         if (times >= 2) {
-            return 10;
+            return 0.1;
         } else {
             return 0;
         }
