@@ -16,10 +16,10 @@ public class PriceService {
 
     public int getPriceForCarDailyRent(long carId,  Long userId) {
         double customerDiscount = this.userService.getDiscountPercentForCustomer(new Customer());
-        int carProductionYear = Objects.requireNonNull(this.carService.findById(carId).orElse(null)).getProductionYear();
 
+        int carProductionYear =
+                Objects.requireNonNull(this.carService.findById(carId).orElse(null)).getProductionYear();
         int currentYear = Year.now().getValue();
-
         double carDiscount;
         if (currentYear - carProductionYear < 2) {
             carDiscount = -0.1;

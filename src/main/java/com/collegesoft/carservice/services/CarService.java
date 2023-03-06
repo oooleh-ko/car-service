@@ -15,19 +15,6 @@ public class CarService {
         this.repo = repo;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void init() {
-        Car car = new Car();
-        car.setProductionYear(2020);
-        this.repo.save(car);
-        car = new Car();
-        car.setProductionYear(2015);
-        this.repo.save(car);
-        car = new Car();
-        car.setProductionYear(2022);
-        this.repo.save(car);
-    }
-
     private final CarRepository repo;
 
     public Optional<Car> findById(Long id) {
