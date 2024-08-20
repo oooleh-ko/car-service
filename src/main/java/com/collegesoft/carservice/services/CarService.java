@@ -2,11 +2,11 @@ package com.collegesoft.carservice.services;
 
 import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.repositories.CarRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
