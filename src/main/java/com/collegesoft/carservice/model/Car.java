@@ -1,8 +1,9 @@
 package com.collegesoft.carservice.model;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.Entity;
 
 
 @Getter
