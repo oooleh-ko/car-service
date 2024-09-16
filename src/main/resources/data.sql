@@ -1,1 +1,2 @@
 INSERT INTO car (production_year, vin_code, image_url, brand, model) VALUES (2005, '5342534534ae543', null, 'opel', 'astra');
+INSERT INTO customer (name, email, rent_amount_times) VALUES ('petro', 'petro@gmail.com', 0);

@@ -6,9 +6,9 @@ import lombok.Setter;
 import javax.persistence.Entity;
 
 
+@Entity
 @Getter
 @Setter
-@Entity
 public class Car extends BaseEntity {
     private int productionYear;
     private String vinCode;

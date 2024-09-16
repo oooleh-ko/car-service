@@ -11,11 +11,11 @@ import java.util.Objects;
 @AllArgsConstructor
 public class PriceService {
     public final int BASE_PRICE = 100;
-    public UserService userService;
+    public CustomerService customerService;
     public CarService carService;
 
     public int getPriceForCarDailyRent(long carId,  Long userId) {
-        double customerDiscount = this.userService.getDiscountPercentForCustomer(new Customer());
+        double customerDiscount = this.customerService.getDiscountPercentForCustomer(new Customer());
 
         int carProductionYear =
                 Objects.requireNonNull(this.carService.findById(carId).orElse(null)).getProductionYear();

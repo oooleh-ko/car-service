@@ -4,7 +4,7 @@ import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.model.Customer;
 import com.collegesoft.carservice.services.CarService;
 import com.collegesoft.carservice.services.PriceService;
-import com.collegesoft.carservice.services.UserService;
+import com.collegesoft.carservice.services.CustomerService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ class PriceServiceTest {
 	@InjectMocks
 	public PriceService priceService;
 	@Mock
-	public UserService userService;
+	public CustomerService customerService;
 
 	@Mock
 	public CarService carService;
@@ -38,7 +38,7 @@ class PriceServiceTest {
 
 		when(this.carService.findById(any())).thenReturn(Optional.of(this.car));
 
-		when(this.userService.getDiscountPercentForCustomer(any())).thenReturn(0.0);
+		when(this.customerService.getDiscountPercentForCustomer(any())).thenReturn(0.0);
 	}
 
 	@Test
@@ -51,7 +51,7 @@ class PriceServiceTest {
 
 		// assert
 		Assert.isTrue(finalPrice == 100, "");
-		verify(userService, times(1)).getDiscountPercentForCustomer(any());
+		verify(customerService, times(1)).getDiscountPercentForCustomer(any());
 	}
 
 	@Test
@@ -61,7 +61,7 @@ class PriceServiceTest {
 		int finalPrice = this.priceService.getPriceForCarDailyRent(1L, null);
 
 		Assert.isTrue(finalPrice == 110, "");
-		verify(userService, times(1)).getDiscountPercentForCustomer(any());
+		verify(customerService, times(1)).getDiscountPercentForCustomer(any());
 	}
 
 	@Test
@@ -70,6 +70,6 @@ class PriceServiceTest {
 		int finalPrice = this.priceService.getPriceForCarDailyRent(2L, null);
 
 		Assert.isTrue(finalPrice == 85, "");
-		verify(userService, times(1)).getDiscountPercentForCustomer(any());
+		verify(customerService, times(1)).getDiscountPercentForCustomer(any());
 	}
 }
