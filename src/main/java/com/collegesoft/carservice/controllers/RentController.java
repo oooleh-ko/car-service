@@ -2,13 +2,12 @@ package com.collegesoft.carservice.controllers;
 
 import com.collegesoft.carservice.model.CarRent;
 import com.collegesoft.carservice.services.RentalService;
+import com.collegesoft.carservice.dto.RentCarRequest;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/rentals")
@@ -20,16 +19,12 @@ public class RentController {
     }
 
     @PostMapping("/rent")
-    public CarRent rentCar(
-            @RequestParam Long carId,
-            @RequestParam Long customerId,
-            @RequestParam String rentalDate,
-            @RequestParam String returnDate) {
+    public CarRent rentCar(@RequestBody RentCarRequest request) {
         return rentalService.rentCar(
-                carId,
-                customerId,
-                LocalDate.parse(rentalDate),
-                LocalDate.parse(returnDate)
+                request.getCarId(),
+                request.getCustomerId(),
+                request.getStartDate(),
+                request.getEndDate()
         );
     }
 }

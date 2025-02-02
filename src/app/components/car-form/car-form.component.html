@@ -1,0 +1,67 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit Car' : 'Add New Car' }}</h2>
+  
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()" class="needs-validation">
+    <div class="mb-3">
+      <label for="brand" class="form-label">Brand</label>
+      <input type="text" class="form-control" id="brand" formControlName="brand"
+        [class.is-invalid]="carForm.get('brand')?.invalid && carForm.get('brand')?.touched">
+      <div class="invalid-feedback" *ngIf="carForm.get('brand')?.invalid && carForm.get('brand')?.touched">
+        Brand is required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="model" class="form-label">Model</label>
+      <input type="text" class="form-control" id="model" formControlName="model"
+        [class.is-invalid]="carForm.get('model')?.invalid && carForm.get('model')?.touched">
+      <div class="invalid-feedback" *ngIf="carForm.get('model')?.invalid && carForm.get('model')?.touched">
+        Model is required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="vinCode" class="form-label">VIN Code</label>
+      <input type="text" class="form-control" id="vinCode" formControlName="vinCode"
+        [class.is-invalid]="carForm.get('vinCode')?.invalid && carForm.get('vinCode')?.touched">
+      <div class="invalid-feedback" *ngIf="carForm.get('vinCode')?.invalid && carForm.get('vinCode')?.touched">
+        VIN Code is required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="productionYear" class="form-label">Production Year</label>
+      <input type="number" class="form-control" id="productionYear" formControlName="productionYear"
+        [class.is-invalid]="carForm.get('productionYear')?.invalid && carForm.get('productionYear')?.touched">
+      <div class="invalid-feedback" *ngIf="carForm.get('productionYear')?.invalid && carForm.get('productionYear')?.touched">
+        Please enter a valid year between 1900 and {{ currentYear }}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Car Image</label>
+      <div class="d-flex gap-3 align-items-start">
+        <div class="flex-grow-1">
+          <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl" 
+            placeholder="Enter image URL">
+        </div>
+        <button type="button" class="btn btn-outline-primary" (click)="getRandomImage()" [disabled]="loading">
+          {{ loading ? 'Loading...' : 'Get Random Image' }}
+        </button>
+      </div>
+      
+      <div *ngIf="carForm.get('imageUrl')?.value" class="mt-3">
+        <img [src]="carForm.get('imageUrl')?.value" class="img-thumbnail" style="max-height: 200px" alt="Car preview">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary" [disabled]="!carForm.valid">Save Car</button>
+      <button type="button" class="btn btn-secondary ms-2" routerLink="/cars">Cancel</button>
+    </div>
+  </form>
+</div> 

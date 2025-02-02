@@ -1,3 +1,35 @@
 .navbar {
     margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Style for all dropdown items */
+.dropdown-item {
+    color: #333;
+}
+
+/* Style for active/selected dropdown item */
+.dropdown-item.active {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.btn-outline-secondary {
+    min-width: 120px;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Style for active item when hovered */
+.dropdown-item.active:hover {
+    background-color: #dde0e3;
+}
+
+/* Style for dropdown menu */
+.dropdown-menu {
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.15);
 } 

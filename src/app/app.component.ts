@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Car Rental Service';
+  cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
+  selectedCity = this.cities[0];
+
+  onCityChange(city: string): void {
+    this.selectedCity = city;
+  }
 } 

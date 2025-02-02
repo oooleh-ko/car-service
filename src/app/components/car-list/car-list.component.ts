@@ -4,11 +4,13 @@ import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-car-list',
-  templateUrl: './car-list.component.html'
+  templateUrl: './car-list.component.html',
+  styleUrls: ['./car-list.component.css']
 })
 export class CarListComponent implements OnInit {
   cars: Car[] = [];
   error: string = '';
+  defaultImageUrl = 'https://placehold.co/600x400/gray/white?text=No+Image';
 
   constructor(private carService: CarService) { }
 
@@ -27,5 +29,9 @@ export class CarListComponent implements OnInit {
         this.error = 'Failed to load cars. Please try again later.';
       }
     });
+  }
+
+  handleImageError(event: any): void {
+    event.target.src = this.defaultImageUrl;
   }
 } 

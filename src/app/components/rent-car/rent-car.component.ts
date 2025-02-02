@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RentalService } from '../../services/rental.service';
+import { CarService } from '../../services/car.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Car } from '../../models/car.model';
 
 @Component({
   selector: 'app-rent-car',
@@ -9,10 +11,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RentCarComponent implements OnInit {
   rentForm: FormGroup;
+  error: string = '';
+  car?: Car;
+  defaultImageUrl = 'https://placehold.co/600x400/gray/white?text=No+Image';
 
   constructor(
     private fb: FormBuilder,
     private rentalService: RentalService,
+    private carService: CarService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -25,12 +31,21 @@ export class RentCarComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Get carId from route parameter
-    this.route.params.subscribe(params => {
-      if (params['id']) {
-        this.rentForm.patchValue({
-          carId: params['id']
-        });
+    const carId = this.route.snapshot.paramMap.get('id');
+    if (carId) {
+      this.loadCar(+carId);
+      this.rentForm.patchValue({ carId: carId });
+    }
+  }
+
+  private loadCar(id: number): void {
+    this.carService.getCar(id).subscribe({
+      next: (car) => {
+        this.car = car;
+      },
+      error: (err) => {
+        console.error('Error loading car:', err);
+        this.error = 'Failed to load car details.';
       }
     });
   }
@@ -49,9 +64,13 @@ export class RentCarComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error renting car:', err);
-          // You might want to show an error message to the user here
+          this.error = 'Failed to rent car. Please try again.';
         }
       });
     }
+  }
+
+  handleImageError(event: any): void {
+    event.target.src = this.defaultImageUrl;
   }
 } 
