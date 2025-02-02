@@ -23,9 +23,8 @@ public class CarServiceApplication {
 	}
 
 	void createTables() {
-		// Create car table
-		jdbcTemplate.execute("DROP TABLE IF EXISTS car");
-		jdbcTemplate.execute("CREATE TABLE car(" +
+		// Create car table if not exists
+		jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS car(" +
 				"id SERIAL PRIMARY KEY," +
 				"brand VARCHAR(255)," +
 				"model VARCHAR(255)," +
@@ -36,9 +35,8 @@ public class CarServiceApplication {
 				"updated_at TIMESTAMP" +
 				")");
 
-		// Create customer table
-		jdbcTemplate.execute("DROP TABLE IF EXISTS customer");
-		jdbcTemplate.execute("CREATE TABLE customer(" +
+		// Create customer table if not exists
+		jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS customer(" +
 				"id SERIAL PRIMARY KEY," +
 				"name VARCHAR(255)," +
 				"email VARCHAR(255)," +
@@ -47,9 +45,8 @@ public class CarServiceApplication {
 				"updated_at TIMESTAMP" +
 				")");
 
-		// Create car_rent table
-		jdbcTemplate.execute("DROP TABLE IF EXISTS car_rent");
-		jdbcTemplate.execute("CREATE TABLE car_rent(" +
+		// Create car_rent table if not exists
+		jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS car_rent(" +
 				"id SERIAL PRIMARY KEY," +
 				"car_id BIGINT REFERENCES car(id)," +
 				"customer_id BIGINT REFERENCES customer(id)," +
