@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Rent a Car</h2>
+  <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="startDate" formControlName="startDate">
+    </div>
+    <div class="mb-3">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="date" class="form-control" id="endDate" formControlName="endDate">
+    </div>
+    <div class="mb-3">
+      <label for="customerId" class="form-label">Customer ID</label>
+      <input type="number" class="form-control" id="customerId" formControlName="customerId">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!rentForm.valid">Submit</button>
+  </form>
+</div> 

@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Available Cars</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let car of cars">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{car.brand}} {{car.model}}</h5>
+          <div class="card-text">
+            <p><strong>Year:</strong> {{car.productionYear}}</p>
+            <p><strong>VIN:</strong> {{car.vinCode}}</p>
+            <p class="text-muted small">ID: {{car.id}}</p>
+          </div>
+          <button class="btn btn-primary mt-2" [routerLink]="['/rent', car.id]">
+            Rent This Car
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="cars.length === 0" class="alert alert-info">
+    No cars available at the moment.
+  </div>
+</div> 
