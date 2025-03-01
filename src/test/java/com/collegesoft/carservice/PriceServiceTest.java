@@ -56,7 +56,7 @@ class PriceServiceTest {
 
 	@Test
 	void verifyPriceForNewCar() {
-		this.car.setProductionYear(2022);
+		this.car.setProductionYear(2024);
 
 		int finalPrice = this.priceService.getPriceForCarDailyRent(1L, null);
 
