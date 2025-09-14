@@ -36,8 +36,8 @@ class PriceServiceTest {
 		this.car = new Car();
 		this.customer = new Customer();
 
+		// assert
 		when(this.carService.findById(any())).thenReturn(Optional.of(this.car));
-
 		when(this.customerService.getDiscountPercentForCustomer(any())).thenReturn(0.0);
 	}
 
