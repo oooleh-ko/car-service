@@ -28,6 +28,14 @@ public class CarRepository {
         return results.isEmpty() ? Optional.empty() : Optional.of(results.get(0));
     }
 
+    public List<Car> findByCity(String city) {
+        return jdbcTemplate.query(
+                "SELECT * FROM car WHERE city_based = ?",
+                rowMapper,
+                city
+        );
+    }
+
     public List<Car> findAll() {
         return jdbcTemplate.query("SELECT * FROM car", rowMapper);
     }
@@ -40,8 +48,8 @@ public class CarRepository {
     }
 
     private Car insert(Car car) {
-        String sql = "INSERT INTO car (brand, model, vin_code, production_year, image_url, created_at, updated_at) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO car (brand, model, vin_code, production_year, image_url, city_based, created_at, updated_at) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         KeyHolder keyHolder = new GeneratedKeyHolder();
         LocalDateTime now = LocalDateTime.now();
@@ -53,6 +61,7 @@ public class CarRepository {
             ps.setString(3, car.getVinCode());
             ps.setInt(4, car.getProductionYear());
             ps.setString(5, car.getImageUrl());
+            ps.setString(6, car.getCityBased());
             ps.setTimestamp(6, Timestamp.valueOf(now));
             ps.setTimestamp(7, Timestamp.valueOf(now));
             return ps;

@@ -35,4 +35,8 @@ public class CarService {
         this.repo.deleteById(id);
         return true;
     }
+
+  public Iterable<Car> findByCity(String city) {
+    return this.repo.findByCity(city);
+  }
 }

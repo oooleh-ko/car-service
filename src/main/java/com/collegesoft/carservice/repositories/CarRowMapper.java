@@ -14,6 +14,7 @@ public class CarRowMapper implements RowMapper<Car> {
         car.setBrand(rs.getString("brand"));
         car.setModel(rs.getString("model"));
         car.setVinCode(rs.getString("vin_code"));
+        car.setCityBased(rs.getString("city_based"));
         car.setProductionYear(rs.getInt("production_year"));
         car.setImageUrl(rs.getString("image_url"));
         car.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CarService } from './services/car.service';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Car Rental Service';
-  cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
-  selectedCity = this.cities[0];
+  public title = 'Car Rental Service';
+  public cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
+  public selectedCity!: string;
 
-  onCityChange(city: string): void {
+  constructor(private carService: CarService) {
+    this.changeCity(this.cities[0]);
+  }
+
+  public changeCity(city: string): void {
     this.selectedCity = city;
+    this.carService.selectCity(city);
   }
 } 

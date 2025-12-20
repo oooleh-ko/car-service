@@ -1,5 +1,6 @@
 package com.collegesoft.carservice.services;
 
+import com.collegesoft.carservice.dto.CarRentView;
 import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.model.CarRent;
 import com.collegesoft.carservice.model.Customer;
@@ -9,6 +10,7 @@ import com.collegesoft.carservice.repositories.CarRentRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,5 +39,9 @@ public class RentalService {
         } else {
             throw new RuntimeException("Car or Customer not found");
         }
+    }
+
+    public List<CarRentView> getRentsByCity(String city) {
+        return rentalRepository.findCarRentsByCity(city);
     }
 }

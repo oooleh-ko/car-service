@@ -1,13 +1,13 @@
 package com.collegesoft.carservice.controllers;
 
+import com.collegesoft.carservice.dto.CarRentView;
 import com.collegesoft.carservice.model.CarRent;
 import com.collegesoft.carservice.services.RentalService;
 import com.collegesoft.carservice.dto.RentCarRequest;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/rentals")
@@ -26,5 +26,10 @@ public class RentController {
                 request.getStartDate(),
                 request.getEndDate()
         );
+    }
+
+    @GetMapping("/rent")
+    public List<CarRentView> rentCar(@RequestParam String city) {
+        return rentalService.getRentsByCity(city);
     }
 }

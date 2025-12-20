@@ -15,7 +15,7 @@
           <li *ngFor="let city of cities">
             <button class="dropdown-item" 
                     type="button"
-                    (click)="onCityChange(city)"
+                    (click)="changeCity(city)"
                     [class.active]="city === selectedCity">
               {{city}}
             </button>

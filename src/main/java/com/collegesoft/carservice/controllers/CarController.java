@@ -19,8 +19,12 @@ public class CarController {
     }
 
     @GetMapping()
-    public Iterable<Car> getAll() {
-        return this.carService.findAll();
+    public Iterable<Car> getAll(@RequestParam String city) {
+        if (city != null && !city.isEmpty()) {
+            return this.carService.findByCity(city);
+        } else {
+            return this.carService.findAll();
+        }
     }
 
     @PostMapping()

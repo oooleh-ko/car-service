@@ -8,10 +8,20 @@ import { API_ENDPOINTS } from '../shared/constants';
   providedIn: 'root'
 })
 export class CarService {
+  public city!: string;
+
   constructor(private http: HttpClient) { }
 
+  selectCity(city: string): void {
+    this.city = city;
+  }
+
   getCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(API_ENDPOINTS.CARS);
+    return this.http.get<Car[]>(`${API_ENDPOINTS.CARS}`, {
+      params: this.city ? {
+        city: this.city
+      } : {}
+    });
   }
 
   getCar(id: number): Observable<Car> {

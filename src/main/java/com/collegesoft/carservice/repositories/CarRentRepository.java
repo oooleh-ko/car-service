@@ -1,5 +1,6 @@
 package com.collegesoft.carservice.repositories;
 
+import com.collegesoft.carservice.dto.CarRentView;
 import com.collegesoft.carservice.model.CarRent;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -81,6 +82,33 @@ public class CarRentRepository {
         carRent.setUpdatedAt(now);
         return carRent;
     }
+
+    public List<CarRentView> findCarRentsByCity(String city) {
+
+        String sql =
+                "SELECT r.id AS rent_id, " +
+                        "c.brand, c.model, c.city_based, " +
+                        "cu.name AS customer_name, cu.email AS customer_email, " +
+                        "r.start_date, r.end_date " +
+                        "FROM car_rent r " +
+                        "JOIN car c ON r.car_id = c.id " +
+                        "JOIN customer cu ON r.customer_id = cu.id " +
+                        "WHERE c.city_based = ? ORDER BY r.created_at DESC";
+
+        return jdbcTemplate.query(sql, new Object[]{city}, (rs, rowNum) -> {
+            CarRentView view = new CarRentView();
+            view.setRentId(rs.getLong("rent_id"));
+            view.setBrand(rs.getString("brand"));
+            view.setModel(rs.getString("model"));
+            view.setCity(rs.getString("city_based"));
+            view.setCustomerName(rs.getString("customer_name"));
+            view.setCustomerEmail(rs.getString("customer_email"));
+            view.setStartDate(rs.getDate("start_date"));
+            view.setEndDate(rs.getDate("end_date"));
+            return view;
+        });
+    }
+
 
     public void deleteById(Long id) {
         jdbcTemplate.update("DELETE FROM car_rent WHERE id = ?", id);
