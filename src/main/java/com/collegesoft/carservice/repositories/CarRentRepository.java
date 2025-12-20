@@ -93,7 +93,7 @@ public class CarRentRepository {
                         "FROM car_rent r " +
                         "JOIN car c ON r.car_id = c.id " +
                         "JOIN customer cu ON r.customer_id = cu.id " +
-                        "WHERE c.city_based = ? ORDER BY r.created_at DESC";
+                        "WHERE c.city_based = ? ORDER BY r.created_at DESC LIMIT 100";
 
         return jdbcTemplate.query(sql, new Object[]{city}, (rs, rowNum) -> {
             CarRentView view = new CarRentView();

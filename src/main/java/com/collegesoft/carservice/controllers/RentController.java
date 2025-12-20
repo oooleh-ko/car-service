@@ -7,6 +7,7 @@ import com.collegesoft.carservice.dto.RentCarRequest;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -30,6 +31,9 @@ public class RentController {
 
     @GetMapping("/rent")
     public List<CarRentView> rentCar(@RequestParam String city) {
-        return rentalService.getRentsByCity(city);
+        System.out.println(Instant.now());
+        List<CarRentView> carRents = rentalService.getRentsByCity(city);
+        System.out.println(Instant.now());
+        return carRents;
     }
 }

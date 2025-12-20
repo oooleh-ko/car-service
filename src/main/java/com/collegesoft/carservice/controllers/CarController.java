@@ -4,6 +4,9 @@ import com.collegesoft.carservice.model.Car;
 import com.collegesoft.carservice.services.CarService;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.util.List;
+
 @RestController
 @RequestMapping("/car")
 public class CarController {
@@ -20,11 +23,15 @@ public class CarController {
 
     @GetMapping()
     public Iterable<Car> getAll(@RequestParam String city) {
+        Iterable<Car> cars;
+        System.out.println(Instant.now());
         if (city != null && !city.isEmpty()) {
-            return this.carService.findByCity(city);
+            cars = this.carService.findByCity(city);
         } else {
-            return this.carService.findAll();
+            cars = this.carService.findAll();
         }
+        System.out.println(Instant.now());
+        return cars;
     }
 
     @PostMapping()
