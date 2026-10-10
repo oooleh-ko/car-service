@@ -1,3 +1,50 @@
+-- car-service sample data: 20 cars (4 in each of 5 cities), 10 customers, 12 rentals.
+-- IDs are generated in insertion order, so cars get IDs 1-20 and customers 1-10.
 
+INSERT INTO car (brand, model, vin_code, city_based, production_year, created_at, updated_at) VALUES
+('opel', 'astra', '5342534534ae543', 'New York', 2005, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Mercedes', 'Hatchback', 'bfc04c0f7bb843a09', 'New York', 2020, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Hyundai', 'Wagon', 'a197d60ae0fd4a919', 'New York', 2009, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Toyota', 'Wagon', '4bf1977243234c0cb', 'New York', 2020, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Toyota', 'Hatchback', 'b83c2c2e6c364fe9a', 'Los Angeles', 2004, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Audi', 'Coupe', 'a06b72e71f5340ada', 'Los Angeles', 2015, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Kia', 'SUV', 'e2a1a60871604e7a9', 'Los Angeles', 2024, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Hyundai', 'Sedan', '4c27be355cdf432c9', 'Los Angeles', 2022, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Audi', 'Wagon', '15324c418d254a77b', 'Chicago', 2015, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Volkswagen', 'Sedan', 'b87afc1dee4a4f2d9', 'Chicago', 2017, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Honda', 'SUV', '2f00ad7519ca48ceb', 'Chicago', 2008, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Toyota', 'Sedan', '7aa32e445b9646579', 'Chicago', 2015, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Hyundai', 'Coupe', 'b143e69bd82247818', 'Houston', 1999, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Nissan', 'SUV', 'd65abaacef0b4b579', 'Houston', 2024, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Ford', 'Wagon', 'adab2971ebe64a69a', 'Houston', 2007, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Mercedes', 'Coupe', '9e9dd5f4fa0d4398b', 'Houston', 2014, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Volkswagen', 'Coupe', '6f51c52bfa2640719', 'Phoenix', 2013, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Toyota', 'SUV', '443823cb66fc4547a', 'Phoenix', 2021, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Nissan', 'Wagon', 'a2f5c0186d654b91a', 'Phoenix', 2020, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Mercedes', 'Wagon', '4c17a673a83f48078', 'Phoenix', 2012, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
+INSERT INTO customer (name, email, rent_amount_times, created_at, updated_at) VALUES
+('petro',  'petro@gmail.com',     3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('olena',  'olena@example.com',   2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('ivan',   'ivan@example.com',    1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('maria',  'maria@example.com',   1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('andrii', 'andrii@example.com',  1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('oksana', 'oksana@example.com',  1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('taras',  'taras@example.com',   0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('iryna',  'iryna@example.com',   1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('dmytro', 'dmytro@example.com',  0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('sofia',  'sofia@example.com',   2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
+INSERT INTO car_rent (car_id, customer_id, start_date, end_date, created_at, updated_at) VALUES
+(1,  1,  DATE '2025-12-15', DATE '2025-12-23', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(5,  1,  DATE '2026-03-02', DATE '2026-03-05', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(9,  1,  DATE '2026-09-10', DATE '2026-09-14', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(2,  2,  DATE '2026-01-20', DATE '2026-01-25', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(13, 2,  DATE '2026-06-01', DATE '2026-06-10', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(17, 3,  DATE '2026-04-12', DATE '2026-04-15', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(6,  4,  DATE '2026-05-03', DATE '2026-05-04', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(10, 5,  DATE '2026-07-18', DATE '2026-07-28', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(14, 6,  DATE '2026-08-05', DATE '2026-08-09', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(18, 8,  DATE '2026-02-14', DATE '2026-02-16', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(3,  10, DATE '2026-10-01', DATE '2026-10-07', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(11, 10, DATE '2026-10-20', DATE '2026-10-27', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
